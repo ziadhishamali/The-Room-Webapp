@@ -1,0 +1,218 @@
+::-webkit-scrollbar {
+    width: 5px;
+    background: white;
+    border-radius: 2.5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+    border-radius: 2.5px;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.home {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: calc((100vw - 80px) / 4) calc((100vw - 80px) / 4) calc((100vw - 80px) / 4) calc((100vw - 80px) / 4); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
+    grid-column-gap: 20px;
+    padding: 10px;
+    grid-template-areas: 'friends chat-area chat-area informations';
+    height: calc(100vh - 20px);
+    background-image: linear-gradient(to right, #00b7ff , violet);
+    /*background-image: url('../images/home.jpg');
+    background-position: center;
+    background-size: cover;*/
+}
+
+.grid-item {
+    height: calc(100vh - 20px);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (max-width: 1200px) {
+    .home {
+        grid-template-columns: calc((100vw - 60px) / 3) calc((100vw - 60px) /3) calc((100vw - 60px) / 3); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
+        grid-template-areas: 'friends chat-area chat-area';
+    }
+
+    .informations {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .home {
+        grid-template-columns: calc(100vw - 20px); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
+        grid-template-areas: 'chat-area';
+    }
+
+    .informations {
+        display: none;
+    }
+
+    .friends {
+        display: none;
+    }
+}
+
+/* pre-defined classes that i use to style font */
+
+.berlin-font {
+    font-family: "Berlin Sans FB";
+}
+
+.arial-font {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.light-weight {
+    font-weight: 400;
+}
+
+.bold-weight {
+    font-weight: bold;
+}
+
+.small-text {
+    font-size: 15px;
+}
+
+.medium-text {
+    font-size: 20px;
+}
+
+.large-text {
+    font-size: 25px;
+}
+
+.black-text {
+    color: black;
+}
+
+.blue-text {
+    color: #00b7ff;
+}
+
+.white-text {
+    color: white;
+}
+
+.orange-text {
+    color: orange;
+}
+
+.green-text {
+    color: green;
+}
+
+.red-text {
+    color: orangered;
+}
+
+/* margins classes */
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.margin-left {
+    margin-left: 20px;
+}
+
+.margin-right {
+    margin-right: 20px;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 40px;
+}
+
+.margin-top-2 {
+    margin-top: 40px;
+}
+
+.margin-top-3 {
+    margin-top: 30px;
+}
+
+.margin-left-2 {
+    margin-left: 40px;
+}
+
+.margin-right-2 {
+    margin-right: 40px;
+}
+
+.margin-top-- {
+    margin-top: 5px;
+}
+
+.margin-top--- {
+    margin-top: 10px;
+}
+
+.margin-top-10 {
+    margin-top: -15px;
+}
+
+.margin-bottom--- {
+    margin-bottom: 10px;
+}
+
+.margin-right-- {
+    margin-right: 5px;
+}
+
+.margin-left-- {
+    margin-left: 5px;
+}
+
+.justify {
+    justify-content: center !important;
+}
+
+.align {
+    align-items: center !important;
+}
+
+.align-left {
+    align-self: flex-start !important;
+}
+
+.align-right {
+    align-self: flex-end !important;
+}
+
+.no-justify {
+    justify-self: left !important;
+}
+
+/* backgrounds */
+.white-background {
+    background-color: white;
+}
+
+.blue-background {
+    background-color: #00b7ff;
+}
+
+.white-background-trans {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.black-background-trans {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.box-shadow {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 15px 0 rgba(0, 0, 0, 0.19);
+}
