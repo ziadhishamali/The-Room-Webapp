@@ -48,8 +48,10 @@ h1 {
 
 @media only screen and (max-width: 750px) {
     .home {
-        grid-template-columns: calc(100vw - 20px); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
+        height: 100vh;
+        grid-template-columns: calc(100vw); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
         grid-template-areas: 'chat-area';
+        padding: 0px;
     }
 
     .informations {

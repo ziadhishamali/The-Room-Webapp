@@ -49,7 +49,7 @@ class ChatArea extends Component {
                     <span className="status">{this.status(this.state.friend)}</span>
                 </div>
                 <ViewMessages messages={this.state.messages}/>
-                <textarea className="message-input margin-top-3 berlin-font" placeholder="send a message"/>
+                <textarea className="message-input margin-top berlin-font" placeholder="send a message"/>
             </div>
         )
     }

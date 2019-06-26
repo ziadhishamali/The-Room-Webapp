@@ -4,6 +4,16 @@
     overflow: visible;
 }
 
+@media only screen and (max-width: 750px) {
+    .chat-area {
+        height: 100vh;
+    }
+
+    .messages {
+        height: calc(100vh - 180px) !important;
+    }
+}
+
 .messages {
     display: flex;
     flex-direction: column;
