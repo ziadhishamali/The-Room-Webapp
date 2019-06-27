@@ -22,10 +22,8 @@ h1 {
     padding: 10px;
     grid-template-areas: 'friends chat-area chat-area informations';
     height: calc(100vh - 20px);
-    background-image: linear-gradient(to right, #00b7ff , violet);
-    /*background-image: url('../images/home.jpg');
-    background-position: center;
-    background-size: cover;*/
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+	background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
 }
 
 .grid-item {

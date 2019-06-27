@@ -19,6 +19,7 @@ class Friends extends Component {
         return (
             <div className="friends grid-item">
                 <h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2">Friends</h1>
+                <input className="search-box small-text black-text berlin-font margin-bottom" placeholder="search"/>
                 <ViewFriends friends={this.state.friends} current={this.state.current}/>
             </div>
         )

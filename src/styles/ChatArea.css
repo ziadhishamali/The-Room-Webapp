@@ -58,7 +58,7 @@
     font-size: 15px;
     border-radius: 20px;
     outline: none;
-    border: 1.2px solid lightgray;
+    border: 1.5px solid lightgray;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
 }

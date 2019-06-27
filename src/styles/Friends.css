@@ -22,3 +22,17 @@
     align-items: flex-start;
     justify-content: center;
 }
+
+.search-box {
+    width: calc(100% - 40px);
+    border: 1.5px solid lightgray;
+    border-radius: 20px;
+    padding: 8px;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    outline: none;
+}
+
+.search-box:focus {
+    border: 1.5px solid #00b7ff;
+}
