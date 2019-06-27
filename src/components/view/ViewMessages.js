@@ -1,17 +1,19 @@
 import React from 'react';
+import img from '../../images/DSC_0287.jpg';
 
 const ViewMessages = ({messages}) => {
     const status = (message) => {
         if (message.from !== "you") {
             return (
-                <div className="margin-left-fix">
-                    <p className="message-from small-text black-text arial-font light-weight margin-top-- white-background margin-left--">{message.content}</p>
+                <div className="margin-left-fix align">
+                    <img className="message-image margin-left--" src={img} alt="img"/>
+                    <p className="message-from small-text black-text arial-font light-weight white-background margin-left--">{message.content}</p>
                 </div>
             )
         } else {
             return (
-                <div className="margin-right-fix">
-                    <p className="message-to small-text black-text arial-font light-weight margin-top-- blue-background margin-right--">{message.content}</p>
+                <div className="margin-right-fix align">
+                    <p className="message-to small-text black-text arial-font light-weight blue-background margin-right--">{message.content}</p>
                 </div>
             )
         }

@@ -1,12 +1,10 @@
 ::-webkit-scrollbar {
-    width: 5px;
-    background: white;
-    border-radius: 2.5px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
     background: lightgray;
-    border-radius: 2.5px;
+    border-radius: 4px;
 }
 
 h1 {
@@ -84,7 +82,7 @@ h1 {
 }
 
 .medium-text {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .large-text {

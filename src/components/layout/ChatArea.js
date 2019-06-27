@@ -44,12 +44,12 @@ class ChatArea extends Component {
     render() {
         return (
             <div className="chat-area grid-item">
-                <div className="margin-bottom margin-top">
+                <div className="margin-bottom--- margin-top---">
                     <span className="medium-text white-text bold-weight">{this.state.friend.name}</span><br/>
                     <span className="status">{this.status(this.state.friend)}</span>
                 </div>
                 <ViewMessages messages={this.state.messages}/>
-                <textarea className="message-input margin-top berlin-font" placeholder="send a message"/>
+                <textarea className="message-input margin-top--- berlin-font" placeholder="send a message"/>
             </div>
         )
     }
