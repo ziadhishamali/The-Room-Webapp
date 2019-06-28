@@ -1,11 +1,18 @@
 .friends {
     grid-area: friends;
+    height: calc(100vh - 20px);
+    overflow: visible;
 }
 
 @media only screen and (max-width: 1000px) {
     .friends {
         height: 100vh;
     }
+}
+
+.friends-list {
+    height: calc(100vh - 160px);
+    overflow-y: scroll !important;
 }
 
 .friend-item {

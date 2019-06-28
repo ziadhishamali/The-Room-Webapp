@@ -39,7 +39,7 @@ const ViewFriends = ({friends, current}) => {
     )
 
     return (
-        <div>
+        <div className="friends-list">
             {view}
         </div>
     )
