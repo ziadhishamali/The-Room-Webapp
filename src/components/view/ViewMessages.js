@@ -13,7 +13,7 @@ const ViewMessages = ({messages}) => {
         } else {
             return (
                 <div className="margin-right-fix align">
-                    <p className="message-to small-text black-text arial-font light-weight blue-background margin-right--">{message.content}</p>
+                    <p className="message-to small-text black-text arial-font light-weight blue-background margin-right---">{message.content}</p>
                 </div>
             )
         }

@@ -1,6 +1,6 @@
 .informations {
     grid-area: informations;
-    overflow-y: scroll !important;
+    overflow-y: overlay !important;
 }
 
 @media only screen and (max-width: 1000px) {

@@ -172,6 +172,14 @@ h1 {
     margin-left: 5px;
 }
 
+.margin-right--- {
+    margin-right: 10px;
+}
+
+.margin-left--- {
+    margin-left: 10px;
+}
+
 .justify {
     justify-content: center !important;
 }

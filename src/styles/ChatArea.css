@@ -21,7 +21,7 @@
 .messages {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll !important;
+    overflow-y: overlay !important;
     height: calc(100vh - 155px);
     width: 100% !important;
     border-top: 0.8px solid rgba(0, 0, 0, 0.2);
@@ -32,8 +32,8 @@
     padding: 8px;
     border-radius: 20px;
     width: auto;
-    min-width: 50px;
     max-width: 80%;
+    text-align: left;
 }
 
 .margin-left-fix {
