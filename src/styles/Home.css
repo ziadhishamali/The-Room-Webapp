@@ -31,31 +31,29 @@ h1 {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
-@media only screen and (max-width: 1200px) {
+/*@media only screen and (max-width: 1200px) {
     .home {
-        grid-template-columns: calc((100vw - 60px) / 3) calc((100vw - 60px) /3) calc((100vw - 60px) / 3); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
+        grid-template-columns: calc((100vw - 60px) / 3) calc((100vw - 60px) /3) calc((100vw - 60px) / 3);
         grid-template-areas: 'friends chat-area chat-area';
     }
+}*/
 
-    .informations {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1000px) {
     .home {
         height: 100vh;
-        grid-template-columns: calc(100vw); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
+        grid-template-columns: calc(100vw);
         grid-template-areas: 'chat-area';
         padding: 0px;
     }
 
-    .informations {
-        display: none;
+    .yes-friend {
+        grid-template-columns: calc(100vw);
+        grid-template-areas: 'friends';
     }
-
-    .friends {
-        display: none;
+    
+    .yes-info {
+        grid-template-columns: calc(100vw);
+        grid-template-areas: 'informations';
     }
 }
 
@@ -213,4 +211,11 @@ h1 {
 
 .box-shadow {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* menu buttons */
+.icon-menu img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }

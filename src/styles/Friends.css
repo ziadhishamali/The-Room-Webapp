@@ -2,10 +2,23 @@
     grid-area: friends;
 }
 
+@media only screen and (max-width: 1000px) {
+    .friends {
+        height: 100vh;
+    }
+}
+
 .friend-item {
     display: flex;
     flex-direction: row;
     padding: 12px 0 12px 0;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+
+.friend-item:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .friend-image {
@@ -23,6 +36,11 @@
     justify-content: center;
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
 .search-box {
     width: calc(100% - 40px);
     border: 1px solid lightgray;
@@ -35,4 +53,9 @@
 
 .search-box:focus {
     border: 1px solid #00b7ff;
+}
+
+.friend-header {
+    width: 100%;
+    margin-left: 40px;
 }

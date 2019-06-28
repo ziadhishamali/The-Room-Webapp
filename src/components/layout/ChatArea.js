@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import '../../styles/ChatArea.css';
 import ViewMessages from '../view/ViewMessages';
+import IconMenu from '../view/IconMenu';
+import friendsIcon from '../../images/icons/friends.svg';
+import menuIcon from '../../images/icons/menu.svg';
 
 class ChatArea extends Component {
     
@@ -18,6 +21,7 @@ class ChatArea extends Component {
 
     state = {
         friend: {name: "Ziad Hisham Ali", status: "active"},
+        width: window.innerWidth,
         messages: [
             {from: "him", to: "you", content: "Hi !!"},
             {from: "him", to: "you", content: "How r u ?"},
@@ -41,12 +45,32 @@ class ChatArea extends Component {
             {from: "him", to: "you", content: "all fine my friend"},
         ]
     }
+
+    componentDidMount() {
+        window.addEventListener("resize", () => this.setState({width: window.innerWidth}));
+    }
+
+    showIcon = (iconName, changeVisibilityFunc, direction) => {
+        if (this.state.width <= 1000) {
+            return (
+                <IconMenu icon={iconName} changeVisibility={changeVisibilityFunc} direction={direction}/>
+            )
+        }
+        return (
+            <span></span>
+        )
+    }
+
     render() {
         return (
             <div className="chat-area grid-item">
-                <div className="margin-bottom--- margin-top---">
-                    <span className="medium-text white-text bold-weight">{this.state.friend.name}</span><br/>
-                    <span className="status">{this.status(this.state.friend)}</span>
+                <div className="flex-row align">
+                    {this.showIcon(friendsIcon, this.props.changeVisibilityFriends, "left")}
+                    <div className="chat-status-bar margin-bottom--- margin-top---">
+                        <span className="medium-text white-text bold-weight">{this.state.friend.name}</span><br/>
+                        <span className="status">{this.status(this.state.friend)}</span>
+                    </div>
+                    {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
                 </div>
                 <ViewMessages messages={this.state.messages}/>
                 <textarea className="message-input margin-top--- berlin-font" placeholder="send a message"/>

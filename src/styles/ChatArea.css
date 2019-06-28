@@ -4,7 +4,7 @@
     overflow: visible;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1000px) {
     .chat-area {
         height: 100vh;
     }
@@ -12,6 +12,10 @@
     .messages {
         height: calc(100vh - 135px) !important;
     }
+}
+
+.chat-status-bar {
+    width: 100%;
 }
 
 .messages {
