@@ -62,13 +62,13 @@
     font-size: 15px;
     border-radius: 20px;
     outline: none;
-    border: 1px solid lightgray;
+    border: 1.5px solid white;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
 }
 
 .message-input:focus {
-    border: 1px solid #00b7ff;
+    border: 1.5px solid #00b7ff;
 }
 
 .message-image {

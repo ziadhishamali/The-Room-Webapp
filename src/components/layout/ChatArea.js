@@ -73,7 +73,7 @@ class ChatArea extends Component {
                     {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
                 </div>
                 <ViewMessages messages={this.state.messages}/>
-                <textarea className="message-input margin-top--- berlin-font" placeholder="send a message"/>
+                <textarea className="message-input margin-top--- berlin-font trans-background white-text" placeholder="send a message"/>
             </div>
         )
     }

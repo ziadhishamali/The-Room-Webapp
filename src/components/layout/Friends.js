@@ -43,7 +43,7 @@ class Friends extends Component {
         return (
             <div className="friends grid-item">
                 {this.getIcon(backIcon, this.props.changeVisibilityFriends, "right")}
-                <input className="search-box small-text black-text berlin-font margin-bottom" placeholder="search"/>
+                <input className="search-box small-text white-text berlin-font margin-bottom trans-background" placeholder="search"/>
                 <ViewFriends friends={this.state.friends} current={this.state.current}/>
             </div>
         )
