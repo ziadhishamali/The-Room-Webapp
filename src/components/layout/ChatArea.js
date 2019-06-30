@@ -8,19 +8,19 @@ import menuIcon from '../../images/icons/menu.svg';
 class ChatArea extends Component {
     
     status = (friend) => {
-        if (friend.status === "active") {
+        if (friend.status === "online") {
             return (
-                <span className="small-text green-text arial-font light-weight margin-top--">{friend.status}</span>
+                <span className="status white-background small-text green-text arial-font light-weight margin-top--">{friend.status}</span>
             )
         } else {
             return (
-                <span className="small-text red-text arial-font light-weight margin-top--">{friend.status}</span>
+                <span className="status white-background small-text red-text arial-font light-weight margin-top--">{friend.status}</span>
             )
         }
     }
 
     state = {
-        friend: {name: "Ziad Hisham Ali", status: "active"},
+        friend: {name: "Ziad Hisham Ali", status: "online"},
         width: window.innerWidth,
         messages: [
             {from: "him", to: "you", content: "Hi !!"},
@@ -68,7 +68,7 @@ class ChatArea extends Component {
                     {this.showIcon(friendsIcon, this.props.changeVisibilityFriends, "left")}
                     <div className="chat-status-bar margin-bottom--- margin-top---">
                         <span className="medium-text white-text bold-weight">{this.state.friend.name}</span><br/>
-                        <span className="status">{this.status(this.state.friend)}</span>
+                        <span className="">{this.status(this.state.friend)}</span>
                     </div>
                     {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
                 </div>

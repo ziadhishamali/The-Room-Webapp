@@ -3,7 +3,7 @@ import image from '../../images/DSC_0287.jpg';
 
 const ViewFriends = ({friends, current}) => {
     const status = (friend) => {
-        if (friend.status === "active") {
+        if (friend.status === "online") {
             return (
                 <span className="small-text green-text arial-font light-weight margin-bottom--- margin-top-10">{friend.status}</span>
             )

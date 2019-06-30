@@ -3,11 +3,21 @@ import '../../styles/Home.css';
 import Friends from './Friends';
 import ChatArea from './ChatArea';
 import Informations from './Informations';
+import { LogContext } from '../../contexts/LogContext';
 
 class Home extends Component {
     state = {
         friendsVisible: false,
         infoVisible: false,
+    }
+
+    static contextType = LogContext;
+
+    componentWillMount() {
+        const { signedin } = this.context;
+        if (!signedin) {
+            this.props.history.push('/signin');
+        }
     }
 
     changeVisibilityFriends = () => {
@@ -43,7 +53,7 @@ class Home extends Component {
             <div className={this.getHomeClass()}>
                 <Friends changeVisibilityFriends={this.changeVisibilityFriends} />
                 <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} />
-                <Informations changeVisibilityInfo={this.changeVisibilityInfo} />
+                <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history}/>
             </div>
         )
     }

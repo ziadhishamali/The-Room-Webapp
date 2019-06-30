@@ -33,11 +33,15 @@ class Informations extends Component {
         )
     }
 
+    logOut = () => {
+        this.props.history.push('/signin');
+    }
+
     render() {
         return (
             <div className="informations grid-item">
                 {this.getIcon(next, this.props.changeVisibilityInfo, "left")}
-                <ViewButton icon={logout} label={"Log Out"} color={"white"} />
+                <ViewButton icon={logout} label={"Log Out"} color={"white"} onClick={this.logOut} />
                 <h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2">Options</h1>
                 <ViewButton icon={design} label={"Change Color"} color={"white"} />
                 <ViewButton icon={edit} label={"Edit Nicknames"} color={"white"} />

@@ -7,13 +7,13 @@ const ViewMessages = ({messages}) => {
             return (
                 <div className="margin-left-fix align">
                     <img className="message-image margin-left--" src={img} alt="img"/>
-                    <p className="message-from small-text black-text arial-font light-weight white-background margin-left--">{message.content}</p>
+                    <p className="message-from small-text black-text berlin-font light-weight white-background margin-left--">{message.content}</p>
                 </div>
             )
         } else {
             return (
                 <div className="margin-right-fix align">
-                    <p className="message-to small-text black-text arial-font light-weight blue-background margin-right---">{message.content}</p>
+                    <p className="message-to small-text white-text berlin-font light-weight blue-background margin-right---">{message.content}</p>
                 </div>
             )
         }
