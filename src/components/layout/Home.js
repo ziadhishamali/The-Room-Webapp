@@ -29,6 +29,7 @@ class Home extends Component {
     componentDidMount() {
         this._isMounted = true;
         const { firebaseUser, firstName, lastName, setFirstName, setLastName, setUsersRef, setFriends } = this.context;
+        
         // get the data of the currently logged in user
         if (firebaseUser) {
             let usersRef = db.collection("users");
