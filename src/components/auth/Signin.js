@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import '../../styles/Signin.css';
-import { LogContext } from '../../contexts/LogContext';
+import {auth} from './firebase';
 
 class Signin extends Component {
     state = { 
         email: "",
         password: ""
     }
-
-    static contextType = LogContext;
 
     changeEmail = (e) => {
         this.setState({email: e.target.value});
@@ -19,11 +17,12 @@ class Signin extends Component {
     }
 
     submit = (e) => {
-        const { changeSignedIn } = this.context;
         e.preventDefault();
         console.log(this.state);
-        changeSignedIn();
-        this.props.history.push('/');
+
+        // authentication
+        const promise = auth.signInWithEmailAndPassword(this.state.email, this.state.password);
+        promise.catch(error => console.log(error));
     }
 
     render() { 
@@ -34,7 +33,7 @@ class Signin extends Component {
                     <input className="input-text small-text white-text berlin-font trans-background margin-top-4" type="text" value={this.state.email} onChange={e => this.changeEmail(e)} placeholder="email address"/>
                     <input className="input-text small-text white-text berlin-font trans-background margin-top" type="password" value={this.state.password} onChange={e => this.changePassword(e)} placeholder="password"/>
                     <button className="submit-button small-text berlin-font margin-top-2">LOG IN</button>
-                    <button className="submit-button button-orange small-text berlin-font margin-top-4 margin-bottom-2" onClick={() => {this.props.history.push('/signup')}}>SIGN UP</button>
+                    <button type="button" className="submit-button button-orange small-text berlin-font margin-top-4 margin-bottom-2" onClick={() => {this.props.history.push('/signup')}}>SIGN UP</button>
                 </form>
             </div>
         );

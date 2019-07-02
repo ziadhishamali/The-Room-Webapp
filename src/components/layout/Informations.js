@@ -7,6 +7,7 @@ import next from '../../images/icons/next.svg';
 import logout from '../../images/icons/logout-white.svg';
 import design from '../../images/icons/design-white.png';
 import edit from '../../images/icons/edit-white.png';
+import { auth } from '../auth/firebase';
 
 class Informations extends Component {
     state = {
@@ -34,7 +35,7 @@ class Informations extends Component {
     }
 
     logOut = () => {
-        this.props.history.push('/signin');
+        auth.signOut();
     }
 
     render() {

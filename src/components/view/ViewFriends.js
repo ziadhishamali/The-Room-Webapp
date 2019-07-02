@@ -2,6 +2,7 @@ import React from 'react';
 import image from '../../images/DSC_0287.jpg';
 
 const ViewFriends = ({friends, current}) => {
+
     const status = (friend) => {
         if (friend.status === "online") {
             return (
@@ -35,7 +36,10 @@ const ViewFriends = ({friends, current}) => {
             )
         })
     ) : (
-        <span>you don't have friends yet !!</span>
+        <div>
+            <span className="medium-text berlin-font white-text">you don't have friends yet !!</span><br/>
+            <button className="submit-button button-orange small-text berlin-font margin-top">Add Friends</button>
+        </div>
     )
 
     return (
