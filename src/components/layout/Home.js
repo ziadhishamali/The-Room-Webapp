@@ -56,7 +56,9 @@ class Home extends Component {
                             fr.status = "online";
                             fr.image = "../../images/DSC_0287.jpg";
                             realFriends.push(fr);
-                            this.setState({friends: realFriends});
+                            if (this._isMounted) {
+                                this.setState({friends: realFriends});
+                            }
                         })
                     });
 
@@ -68,7 +70,9 @@ class Home extends Component {
                         imageUrl: ""
                     })
                 }
-                this.setState({loaded: true});
+                if (this._isMounted) {
+                    this.setState({loaded: true});
+                }
             })
         }
     }
@@ -78,6 +82,10 @@ class Home extends Component {
         if (!signedin) {
             this.props.history.push('/signin');
         }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     changeVisibilityFriends = () => {
@@ -109,13 +117,19 @@ class Home extends Component {
     }
 
     render() {
-        return (
-            <div className={this.getHomeClass()}>
-                <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} />
-                <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} />
-                <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history}/>
-            </div>
-        )
+        if (this._isMounted) {
+            return (
+                <div className={this.getHomeClass()}>
+                    <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} />
+                    <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} />
+                    <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history}/>
+                </div>
+            )
+        } else {
+            return (
+                <div></div>
+            )
+        }
     }
 }
 

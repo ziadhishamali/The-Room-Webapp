@@ -50,6 +50,10 @@ class ChatArea extends Component {
         window.addEventListener("resize", () => this.setState({width: window.innerWidth}));
     }
 
+    componentWillUnmount() {
+        window.removeEventListener("resize", () => this.setState({width: window.innerWidth}));
+    }
+
     showIcon = (iconName, changeVisibilityFunc, direction) => {
         if (this.state.width <= 1000) {
             return (
