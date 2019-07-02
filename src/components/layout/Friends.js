@@ -19,6 +19,7 @@ class Friends extends Component {
             {name: "Mostafa Farrag", status: "online", image: "../../images/DSC_0287.jpg"}
         ],*/
         current: 0,
+        searchList: [],
         searching: false,
     }
 
@@ -49,15 +50,44 @@ class Friends extends Component {
     }
 
     changeSearchingFalse = () => {
-        this.setState({searching: false});
+        setTimeout(() => {this.setState({searching: false})}, 1000);
     }
 
     search = (e) => {
+        const { usersRef } = this.context;
         if (this.state.searching === false) {
             this.setState({searching: true});
         }
         let name = e.target.value;
         console.log("searching for: ", name);
+        let firstName = name.split(/\s+/)[0];
+        //let lastName = name.split(/\s+/)[1];
+        usersRef.where("firstName", "==", firstName).get().then(querySnapshot => {
+            console.log(querySnapshot);
+            let searchList = [];
+            querySnapshot.forEach(doc => {
+                let sitem = {};
+                sitem.id = doc.id;
+                sitem.name = doc.data().firstName + " " + doc.data().lastName;
+                sitem.status = "online";
+                sitem.image = "../../images/DSC_0287.jpg";
+                searchList.push(sitem);
+            });
+            this.setState({searchList});
+        })
+    }
+
+    addFriend = (idx) => {
+        console.log("searching list: ", this.state.searchList);
+        console.log("added index: ", idx);
+        let addedFriend = [...this.state.searchList][idx];
+        console.log("added friend: ", addedFriend);
+        this.props.friends.forEach(friend => {
+            if (friend.id === addedFriend.id) {
+                return;
+            }
+        });
+        this.props.updateFriends(addedFriend);
     }
 
     render() {
@@ -74,7 +104,7 @@ class Friends extends Component {
                 <div className="friends grid-item">
                     {this.getIcon(backIcon, this.props.changeVisibilityFriends, "right")}
                     <input className="search-box small-text white-text berlin-font margin-bottom trans-background" onBlur={() => this.changeSearchingFalse()} onChange={e => this.search(e)} placeholder="search"/>
-                    <ViewSearching searchList={[]} current={this.state.current}/>
+                    <ViewSearching addFriend={this.addFriend} searchList={this.state.searchList} current={this.state.current}/>
                 </div>
             )
         }

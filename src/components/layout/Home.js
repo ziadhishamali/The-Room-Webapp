@@ -29,7 +29,7 @@ class Home extends Component {
     componentDidMount() {
         this._isMounted = true;
         const { firebaseUser, firstName, lastName, setFirstName, setLastName, setUsersRef, setFriends } = this.context;
-        
+
         // get the data of the currently logged in user
         if (firebaseUser) {
             let usersRef = db.collection("users");
@@ -53,6 +53,7 @@ class Home extends Component {
                     friends.forEach(element => {
                         var fr = {};
                         usersRef.doc(element).get().then(doc => {
+                            fr.id = doc.id;
                             fr.name = doc.data().firstName + " " + doc.data().lastName;
                             fr.status = "online";
                             fr.image = "../../images/DSC_0287.jpg";
@@ -117,11 +118,24 @@ class Home extends Component {
         return homeClass;
     }
 
+    updateFriends = (friend) => {
+        const { friends, setFriends, usersRef, firebaseUser } = this.context;
+        let realFriends = [...this.state.friends, friend];
+        this.setState({friends: realFriends});
+        let friendsTemp = [...friends, friend.id];
+        usersRef.doc(friend.id).get().then(doc => {
+            let friendsSec = doc.data().friends;
+            friendsSec.push(firebaseUser.uid);
+            usersRef.doc(friend.id).update({friends: friendsSec});
+        })
+        setFriends(friendsTemp);
+    }
+
     render() {
         if (this._isMounted) {
             return (
                 <div className={this.getHomeClass()}>
-                    <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} />
+                    <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} updateFriends={this.updateFriends} />
                     <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} />
                     <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history}/>
                 </div>

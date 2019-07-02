@@ -28,6 +28,7 @@ class LogContextProvider extends Component {
 
     setFriends = (friends) => {
         this.setState({friends});
+        this.state.usersRef.doc(this.state.firebaseUser.uid).update({friends: friends});
     }
 
     componentDidMount() {
