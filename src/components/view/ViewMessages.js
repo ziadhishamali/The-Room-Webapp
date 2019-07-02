@@ -1,9 +1,9 @@
 import React from 'react';
 import img from '../../images/DSC_0287.jpg';
 
-const ViewMessages = ({messages}) => {
+const ViewMessages = ({messages, you}) => {
     const status = (message) => {
-        if (message.from !== "you") {
+        if (message.from !== you) {
             return (
                 <div className="margin-left-fix align">
                     <img className="message-image margin-left--" src={img} alt="img"/>
@@ -21,13 +21,13 @@ const ViewMessages = ({messages}) => {
     const view = messages.length ? (
         messages.map((message, idx) => {
             return (
-                <div key={idx} className="">
+                <div key={idx}>
                     {status(message)}
                 </div>
             )
         })
     ) : (
-        <h1>No messages in this conversation yet !!</h1>
+        <h1 className="medium-text berlin-font white-text margin-top-2">No messages in this conversation yet !!</h1>
     )
 
     return (

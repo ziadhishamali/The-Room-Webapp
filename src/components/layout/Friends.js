@@ -78,16 +78,26 @@ class Friends extends Component {
     }
 
     addFriend = (idx) => {
-        console.log("searching list: ", this.state.searchList);
-        console.log("added index: ", idx);
         let addedFriend = [...this.state.searchList][idx];
-        console.log("added friend: ", addedFriend);
+
+        // check if the user is already friend w/ the selected friend
+        if (this.context.firebaseUser.uid === addedFriend.id) {
+            return;
+        }
         this.props.friends.forEach(friend => {
             if (friend.id === addedFriend.id) {
                 return;
             }
         });
+
+        // the selected friend is new
         this.props.updateFriends(addedFriend);
+    }
+
+    selectFriend = (idx) => {
+        let selectedFriend = [...this.props.friends][idx];
+        this.setState({current: idx});
+        this.props.updateSelected(selectedFriend);
     }
 
     render() {
@@ -96,7 +106,7 @@ class Friends extends Component {
                 <div className="friends grid-item">
                     {this.getIcon(backIcon, this.props.changeVisibilityFriends, "right")}
                     <input className="search-box small-text white-text berlin-font margin-bottom trans-background" onChange={e => this.search(e)} placeholder="search"/>
-                    <ViewFriends friends={this.props.friends} current={this.state.current}/>
+                    <ViewFriends friends={this.props.friends} current={this.state.current} selectFriend={this.selectFriend}/>
                 </div>
             )
         } else {

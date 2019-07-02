@@ -4,11 +4,12 @@ import ViewMessages from '../view/ViewMessages';
 import IconMenu from '../view/IconMenu';
 import friendsIcon from '../../images/icons/friends.svg';
 import menuIcon from '../../images/icons/menu.svg';
+import { LogContext } from '../../contexts/LogContext';
 
 class ChatArea extends Component {
     
     status = (friend) => {
-        if (friend.status === "online") {
+        if (friend.status === "online" || true) {
             return (
                 <span className="status white-background small-text green-text arial-font light-weight margin-top--">{friend.status}</span>
             )
@@ -19,10 +20,12 @@ class ChatArea extends Component {
         }
     }
 
+    static contextType = LogContext;
+
     state = {
-        friend: {name: "Ziad Hisham Ali", status: "online"},
         width: window.innerWidth,
-        messages: [
+        message: "",
+        /*messages: [
             {from: "him", to: "you", content: "Hi !!"},
             {from: "him", to: "you", content: "How r u ?"},
             {from: "you", to: "him", content: "all good <3"},
@@ -43,7 +46,7 @@ class ChatArea extends Component {
             {from: "you", to: "him", content: "all good <3"},
             {from: "you", to: "him", content: "and u ?"},
             {from: "him", to: "you", content: "all fine my friend"},
-        ]
+        ]*/
     }
 
     componentDidMount() {
@@ -65,21 +68,41 @@ class ChatArea extends Component {
         )
     }
 
+    changeMessage = (e) => {
+        this.setState({message: e.target.value});
+    }
+
+    sendMessage = () => {
+        this.setState({message: ""});
+        this.props.sendMessage(this.state.message);
+    }
+
     render() {
-        return (
-            <div className="chat-area grid-item">
-                <div className="flex-row align">
-                    {this.showIcon(friendsIcon, this.props.changeVisibilityFriends, "left")}
-                    <div className="chat-status-bar margin-bottom--- margin-top---">
-                        <span className="medium-text white-text bold-weight">{this.state.friend.name}</span><br/>
-                        <span className="">{this.status(this.state.friend)}</span>
+        if (this.context.firebaseUser) {
+            return (
+                <div className="chat-area grid-item">
+                    <div className="flex-row align">
+                        {this.showIcon(friendsIcon, this.props.changeVisibilityFriends, "left")}
+                        <div className="chat-status-bar margin-bottom--- margin-top---">
+                            <span className="medium-text white-text bold-weight">{this.props.selectedFriend.name}</span><br/>
+                            <span className="">{this.status(this.props.selectedFriend)}</span>
+                        </div>
+                        {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
                     </div>
-                    {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
+                    <ViewMessages messages={this.props.messages} you={this.context.firebaseUser.uid}/>
+                    <div className="flex-row align">
+                        <textarea className="message-input margin-left margin-top--- berlin-font trans-background white-text" onChange={e => this.changeMessage(e)} value={this.state.message} placeholder="send a message"/>
+                        <button className="submit-button small-text berlin-font margin-left margin-right margin-top---" onClick={() => this.sendMessage()}>Send</button>
+                    </div>
                 </div>
-                <ViewMessages messages={this.state.messages}/>
-                <textarea className="message-input margin-top--- berlin-font trans-background white-text" placeholder="send a message"/>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className="chat-area grid-item">
+                    
+                </div>
+            )
+        }
     }
 }
 

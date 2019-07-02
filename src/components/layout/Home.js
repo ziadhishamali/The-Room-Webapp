@@ -14,7 +14,11 @@ class Home extends Component {
         loaded: false,
         friendsVisible: false,
         infoVisible: false,
-        friends: []
+        friends: [],
+        messages: [],
+        messagesRef: null,
+        messagesDocId: "",
+        selectedFriend: {firstName: "", lastName: ""},
     }
 
     static contextType = LogContext;
@@ -36,7 +40,7 @@ class Home extends Component {
             setUsersRef(usersRef);
 
             // get the user's data using the userID
-            usersRef.doc(firebaseUser.uid).get().then(doc => {
+            usersRef.doc(firebaseUser.uid).onSnapshot(doc => {
                 console.log(doc);
                 if (doc.exists) {
                     console.log("friends: ", doc.data().friends);
@@ -49,6 +53,7 @@ class Home extends Component {
 
                     // making friends list
                     var realFriends = [];
+                    let firstTime = true;
                     console.log("friends ids: ", friends);
                     friends.forEach(element => {
                         var fr = {};
@@ -61,9 +66,12 @@ class Home extends Component {
                             if (this._isMounted) {
                                 this.setState({friends: realFriends});
                             }
+                            if (firstTime) {
+                                this.updateSelected(realFriends[0]);
+                                firstTime = false;
+                            }
                         })
                     });
-
                 } else {
                     usersRef.doc(firebaseUser.uid).set({
                         friends: [],
@@ -123,20 +131,59 @@ class Home extends Component {
         let realFriends = [...this.state.friends, friend];
         this.setState({friends: realFriends});
         let friendsTemp = [...friends, friend.id];
+
+        // update the other user's friends
         usersRef.doc(friend.id).get().then(doc => {
             let friendsSec = doc.data().friends;
             friendsSec.push(firebaseUser.uid);
             usersRef.doc(friend.id).update({friends: friendsSec});
         })
+
         setFriends(friendsTemp);
+    }
+
+    updateSelected = (friend) => {
+        this.setState({selectedFriend: friend});
+        console.log(friend);
+        const { firebaseUser } = this.context;
+        let myId = firebaseUser.uid;
+        let hisId = friend.id;
+        let messagesDocId = "";
+        if (myId < hisId) {
+            messagesDocId = myId + hisId;
+        } else {
+            messagesDocId = hisId + myId;
+        }
+
+        var messagesRef = db.collection("messages");
+        this.setState({messagesRef, messagesDocId});
+        messagesRef.doc(messagesDocId).onSnapshot(doc => {
+            if (doc.exists) {
+                this.setState({messages: doc.data().messages});
+            } else {
+                messagesRef.doc(messagesDocId).set({
+                    messages: []
+                })
+            }
+        })
+    }
+
+    sendMessage = (message) => {
+        console.log(message);
+        let mes = {};
+        mes.content = message;
+        mes.from = this.context.firebaseUser.uid;
+        mes.to = this.state.selectedFriend.id;
+        this.state.messages.push(mes);
+        this.state.messagesRef.doc(this.state.messagesDocId).update({messages: this.state.messages});
     }
 
     render() {
         if (this._isMounted) {
             return (
                 <div className={this.getHomeClass()}>
-                    <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} updateFriends={this.updateFriends} />
-                    <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} />
+                    <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} updateFriends={this.updateFriends} updateSelected={this.updateSelected} />
+                    <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} selectedFriend={this.state.selectedFriend} messages={this.state.messages} sendMessage={this.sendMessage} />
                     <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history}/>
                 </div>
             )

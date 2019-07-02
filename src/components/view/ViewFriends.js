@@ -1,7 +1,7 @@
 import React from 'react';
 import image from '../../images/DSC_0287.jpg';
 
-const ViewFriends = ({friends, current}) => {
+const ViewFriends = ({friends, current, selectFriend}) => {
 
     const status = (friend) => {
         if (friend.status === "online") {
@@ -26,7 +26,7 @@ const ViewFriends = ({friends, current}) => {
     const view = friends.length ? (
         friends.map((friend, idx) => {
             return (
-                <div key={idx} className={background(idx)}>
+                <div key={idx} className={background(idx)} onClick={() => selectFriend(idx)}>
                     <img src={image} alt="img" className="friend-image margin-left"/>
                     <div className="flex-column margin-left">
                         <span className="small-text white-text berlin-font light-weight margin-top---">{friend.name}</span><br/>
