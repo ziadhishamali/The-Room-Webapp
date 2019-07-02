@@ -81,7 +81,7 @@ class ChatArea extends Component {
         if (this.context.firebaseUser) {
             return (
                 <div className="chat-area grid-item">
-                    <div className="flex-row align">
+                    <div className="flex-row align justify">
                         {this.showIcon(friendsIcon, this.props.changeVisibilityFriends, "left")}
                         <div className="chat-status-bar margin-bottom--- margin-top---">
                             <span className="medium-text white-text bold-weight">{this.props.selectedFriend.name}</span><br/>
@@ -90,9 +90,9 @@ class ChatArea extends Component {
                         {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
                     </div>
                     <ViewMessages messages={this.props.messages} you={this.context.firebaseUser.uid}/>
-                    <div className="flex-row align">
-                        <textarea className="message-input margin-left margin-top--- berlin-font trans-background white-text" onChange={e => this.changeMessage(e)} value={this.state.message} placeholder="send a message"/>
-                        <button className="submit-button small-text berlin-font margin-left margin-right margin-top---" onClick={() => this.sendMessage()}>Send</button>
+                    <div className="flex-row align justify margin-top---">
+                        <textarea className="message-input berlin-font trans-background white-text margin-right" onChange={e => this.changeMessage(e)} value={this.state.message} placeholder="send a message"/>
+                        <button className="submit-button small-text berlin-font" onClick={() => this.sendMessage()}>Send</button>
                     </div>
                 </div>
             )

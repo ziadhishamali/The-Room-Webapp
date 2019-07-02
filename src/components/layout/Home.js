@@ -11,6 +11,8 @@ class Home extends Component {
     _isMounted = false;
 
     state = {
+        colors: ["black", "blue", "orange", "red", "violet"],
+        currentColor: 1,
         loaded: false,
         friendsVisible: false,
         infoVisible: false,
@@ -178,13 +180,22 @@ class Home extends Component {
         this.state.messagesRef.doc(this.state.messagesDocId).update({messages: this.state.messages});
     }
 
+    changeColor = () => {
+        let currentColor = this.state.currentColor;
+        currentColor++;
+        if (currentColor >= this.state.colors.length) {
+            currentColor = 0;
+        }
+        this.setState({currentColor});
+    }
+
     render() {
         if (this._isMounted) {
             return (
-                <div className={this.getHomeClass()}>
+                <div className={this.getHomeClass() + " " + this.state.colors[this.state.currentColor] + "-linear"}>
                     <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} updateFriends={this.updateFriends} updateSelected={this.updateSelected} />
                     <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} selectedFriend={this.state.selectedFriend} messages={this.state.messages} sendMessage={this.sendMessage} />
-                    <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history}/>
+                    <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history} changeColor={this.changeColor}/>
                 </div>
             )
         } else {

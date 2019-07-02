@@ -20,8 +20,31 @@ h1 {
     padding: 10px;
     grid-template-areas: 'friends chat-area chat-area informations';
     height: calc(100vh - 20px);
-    background: -webkit-linear-gradient(to right, #91EAE4, #00b7ff);
-	background: linear-gradient(to right, #91EAE4, #00b7ff);
+}
+
+.blue-linear {
+    background: -webkit-linear-gradient(to right, #91EAE4, #00b7ff, #91EAE4);
+	background: linear-gradient(to right, #91EAE4, #00b7ff, #91EAE4);
+}
+
+.orange-linear {
+    background: -webkit-linear-gradient(to right, orange, orangered, orange);
+    background: linear-gradient(to right, orange, orangered, orange);
+}
+
+.red-linear {
+    background: -webkit-linear-gradient(to right, rgb(255, 85, 0), red, rgb(255, 85, 0));
+    background: linear-gradient(to right, rgb(255, 85, 0), red, rgb(255, 85, 0));
+}
+
+.black-linear {
+    background: -webkit-linear-gradient(to right, gray, rgb(67, 67, 67), gray);
+    background: linear-gradient(to right, gray, rgb(67, 67, 67), gray);
+}
+
+.violet-linear {
+    background: -webkit-linear-gradient(to right, violet, purple, violet);
+    background: linear-gradient(to right, violet, purple, violet);
 }
 
 .grid-item {

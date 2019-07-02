@@ -65,6 +65,8 @@
     border: 1.5px solid white;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
+    justify-self: center;
+    align-self: center;
 }
 
 .message-input:focus {

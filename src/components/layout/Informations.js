@@ -48,7 +48,7 @@ class Informations extends Component {
                 {this.getIcon(next, this.props.changeVisibilityInfo, "left")}
                 <ViewButton icon={logout} label={"Log Out"} color={"white"} onClick={this.logOut} />
                 <h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2">Options</h1>
-                <ViewButton icon={design} label={"Change Color"} color={"white"} />
+                <ViewButton icon={design} label={"Change Color"} color={"white"} onClick={() => this.props.changeColor()} />
                 <ViewButton icon={edit} label={"Edit Nicknames"} color={"white"} />
                 <h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2">Shared Files</h1>
             </div>
