@@ -61,20 +61,77 @@ class Friends extends Component {
         let name = e.target.value;
         console.log("searching for: ", name);
         let firstName = name.split(/\s+/)[0];
-        //let lastName = name.split(/\s+/)[1];
+        let lastName = name.split(/\s+/)[1];
+        let searchListID = [];
+        let searchList = [];
+
         usersRef.where("firstName", "==", firstName).get().then(querySnapshot => {
             console.log(querySnapshot);
-            let searchList = [];
             querySnapshot.forEach(doc => {
                 let sitem = {};
-                sitem.id = doc.id;
-                sitem.name = doc.data().firstName + " " + doc.data().lastName;
-                sitem.status = "online";
-                sitem.image = "../../images/DSC_0287.jpg";
-                searchList.push(sitem);
+                if (!searchListID.includes(doc.id)) {
+                    searchListID.push(doc.id);
+                    sitem.id = doc.id;
+                    sitem.name = doc.data().firstName + " " + doc.data().lastName;
+                    sitem.status = "online";
+                    sitem.image = "../../images/DSC_0287.jpg";
+                    searchList.push(sitem);
+                }
             });
             this.setState({searchList});
-        })
+        });
+
+        if (lastName !== undefined) {
+            usersRef.where("firstName", "==", lastName).get().then(querySnapshot => {
+                console.log(querySnapshot);
+                querySnapshot.forEach(doc => {
+                    let sitem = {};
+                    if (!searchListID.includes(doc.id)) {
+                        searchListID.push(doc.id);
+                        sitem.id = doc.id;
+                        sitem.name = doc.data().firstName + " " + doc.data().lastName;
+                        sitem.status = "online";
+                        sitem.image = "../../images/DSC_0287.jpg";
+                        searchList.push(sitem);
+                    }
+                });
+                this.setState({searchList});
+            });
+        }
+
+        if (lastName !== undefined) {
+            usersRef.where("LastName", "==", lastName).get().then(querySnapshot => {
+                console.log(querySnapshot);
+                querySnapshot.forEach(doc => {
+                    let sitem = {};
+                    if (!searchListID.includes(doc.id)) {
+                        searchListID.push(doc.id);
+                        sitem.id = doc.id;
+                        sitem.name = doc.data().firstName + " " + doc.data().lastName;
+                        sitem.status = "online";
+                        sitem.image = "../../images/DSC_0287.jpg";
+                        searchList.push(sitem);
+                    }
+                });
+                this.setState({searchList});
+            });
+        }
+
+        usersRef.where("lastName", "==", firstName).get().then(querySnapshot => {
+            console.log(querySnapshot);
+            querySnapshot.forEach(doc => {
+                let sitem = {};
+                if (!searchListID.includes(doc.id)) {
+                    searchListID.push(doc.id);
+                    sitem.id = doc.id;
+                    sitem.name = doc.data().firstName + " " + doc.data().lastName;
+                    sitem.status = "online";
+                    sitem.image = "../../images/DSC_0287.jpg";
+                    searchList.push(sitem);
+                }
+            });
+            this.setState({searchList});
+        });
     }
 
     addFriend = (idx) => {
@@ -84,19 +141,25 @@ class Friends extends Component {
         if (this.context.firebaseUser.uid === addedFriend.id) {
             return;
         }
-        this.props.friends.forEach(friend => {
+        let flag = false;
+        for (let friend of this.props.friends) {
+            console.log("friend: ", friend.id, " added friend: ", addedFriend.id, (friend.id === addedFriend.id));
             if (friend.id === addedFriend.id) {
-                return;
+                flag = true;
+                break;
             }
-        });
+        }
 
-        // the selected friend is new
-        this.props.updateFriends(addedFriend);
+        if (!flag) {
+            // the selected friend is new
+            this.props.updateFriends(addedFriend);
+        }
     }
 
     selectFriend = (idx) => {
         let selectedFriend = [...this.props.friends][idx];
         this.setState({current: idx});
+        this.props.changeVisibilityFriends();
         this.props.updateSelected(selectedFriend);
     }
 
