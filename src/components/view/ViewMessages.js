@@ -1,12 +1,11 @@
 import React from 'react';
-import img from '../../images/DSC_0287.jpg';
 
-const ViewMessages = ({messages, you}) => {
+const ViewMessages = ({messages, you, selectedFriend}) => {
     const status = (message) => {
         if (message.from !== you) {
             return (
                 <div className="margin-left-fix align">
-                    <img className="message-image margin-left--" src={img} alt="img"/>
+                    <img className="message-image margin-left--" src={selectedFriend.image} alt="img"/>
                     <p className="message-from small-text black-text berlin-font light-weight white-background margin-left--">{message.content}</p>
                 </div>
             )

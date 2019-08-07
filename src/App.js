@@ -16,9 +16,9 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <LogContextProvider>
-            <Route exact path='/' render={(props) => <Home {...props}/>} />
-            <Route path='/signin' component={Signin}/>
-            <Route path='/signup' component={Signup}/>
+            <Route exact path='/theroom/' render={(props) => <Home {...props}/>} />
+            <Route path='/theroom/signin' component={Signin}/>
+            <Route path='/theroom/signup' component={Signup}/>
           </LogContextProvider>
         </div>
       </BrowserRouter>

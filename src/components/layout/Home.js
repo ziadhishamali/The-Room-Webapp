@@ -5,6 +5,8 @@ import ChatArea from './ChatArea';
 import Informations from './Informations';
 import { LogContext } from '../../contexts/LogContext';
 import { db } from '../auth/firebase';
+import man from '../../images/man.svg';
+import woman from '../../images/woman.svg';
 
 class Home extends Component {
 
@@ -28,13 +30,13 @@ class Home extends Component {
     componentWillMount() {
         const { signedin } = this.context;
         if (!signedin) {
-            this.props.history.push('/signin');
+            this.props.history.push('./signin');
         }
     }
 
     componentDidMount() {
         this._isMounted = true;
-        const { firebaseUser, firstName, lastName, setFirstName, setLastName, setUsersRef, setFriends } = this.context;
+        const { firebaseUser, firstName, lastName, image, gender, setFirstName, setLastName, setUsersRef, setFriends } = this.context;
 
         // get the data of the currently logged in user
         if (firebaseUser) {
@@ -63,7 +65,12 @@ class Home extends Component {
                             fr.id = doc.id;
                             fr.name = doc.data().firstName + " " + doc.data().lastName;
                             fr.status = "online";
-                            fr.image = "../../images/DSC_0287.jpg";
+                            fr.gender = doc.data().gender;
+                            if (fr.gender === "male") {
+                                fr.image = man;
+                            } else {
+                                fr.image = woman;
+                            }
                             realFriends.push(fr);
                             if (this._isMounted) {
                                 this.setState({friends: realFriends});
@@ -77,9 +84,10 @@ class Home extends Component {
                 } else {
                     usersRef.doc(firebaseUser.uid).set({
                         friends: [],
-                        firstName: firstName,
-                        lastName: lastName,
-                        imageUrl: ""
+                        image,
+                        firstName,
+                        lastName,
+                        gender
                     })
                 }
                 if (this._isMounted) {
@@ -92,7 +100,7 @@ class Home extends Component {
     componentDidUpdate() {
         const { signedin } = this.context;
         if (!signedin) {
-            this.props.history.push('/signin');
+            this.props.history.push('./signin');
         }
     }
 

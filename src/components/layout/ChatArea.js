@@ -89,7 +89,7 @@ class ChatArea extends Component {
                         </div>
                         {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
                     </div>
-                    <ViewMessages messages={this.props.messages} you={this.context.firebaseUser.uid}/>
+                    <ViewMessages messages={this.props.messages} you={this.context.firebaseUser.uid} selectedFriend={this.props.selectedFriend}/>
                     <div className="flex-row align justify margin-top---">
                         <textarea className="message-input berlin-font trans-background white-text margin-right" onChange={e => this.changeMessage(e)} value={this.state.message} placeholder="send a message"/>
                         <button className="submit-button small-text berlin-font" onClick={() => this.sendMessage()}>Send</button>
