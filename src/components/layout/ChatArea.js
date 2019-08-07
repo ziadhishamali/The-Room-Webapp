@@ -44,6 +44,8 @@ class ChatArea extends Component {
 
     componentDidUpdate() {
         console.log("his status right now: ", this.props.hisStatus);
+        var messageBody = document.querySelector('.messages');
+        messageBody.scrollTop = messageBody.scrollHeight;
     }
 
     showIcon = (iconName, changeVisibilityFunc, direction) => {
