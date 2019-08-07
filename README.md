@@ -1,4 +1,4 @@
-# The-Room-Webapp
+# The Room
 The Room is a chatting web application with responsive design, for usage on all devices, where users create their accounts and chat with their friends with real-time database with good & simple UI with a lot of features. It’s built using React.js, Context API & Firebase.
 
 features:
