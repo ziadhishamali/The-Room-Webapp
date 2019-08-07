@@ -4,18 +4,14 @@
     overflow: visible;
 }
 
-@media only screen and (max-width: 1000px) {
-    .chat-area {
-        height: 100vh;
-    }
-
-    .messages {
-        height: calc(100vh - 135px) !important;
-    }
-}
-
 .chat-status-bar {
     width: 100%;
+}
+
+.typing-status {
+    position: relative;
+    text-align: left;
+    padding: 5px;
 }
 
 .messages {
@@ -83,4 +79,14 @@
 .status {
     padding: 0px 10px 0px 10px;
     border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .chat-area {
+        height: 100vh;
+    }
+
+    .messages {
+        height: calc(100vh - 135px) !important;
+    }
 }

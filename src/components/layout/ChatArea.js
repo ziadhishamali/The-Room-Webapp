@@ -25,36 +25,25 @@ class ChatArea extends Component {
     state = {
         width: window.innerWidth,
         message: "",
-        /*messages: [
-            {from: "him", to: "you", content: "Hi !!"},
-            {from: "him", to: "you", content: "How r u ?"},
-            {from: "you", to: "him", content: "all good <3"},
-            {from: "you", to: "him", content: "and u ?"},
-            {from: "him", to: "you", content: "all fine my friend , i'd like to make this message a bit longer than usual"},
-            {from: "him", to: "you", content: "Hi !!"},
-            {from: "him", to: "you", content: "How r u ?"},
-            {from: "you", to: "him", content: "all good <3"},
-            {from: "you", to: "him", content: "and u ?"},
-            {from: "him", to: "you", content: "all fine my friend"},
-            {from: "him", to: "you", content: "Hi !!"},
-            {from: "him", to: "you", content: "How r u ?"},
-            {from: "you", to: "him", content: "all good <3"},
-            {from: "you", to: "him", content: "and u ?"},
-            {from: "him", to: "you", content: "all fine my friend"},
-            {from: "him", to: "you", content: "Hi !!"},
-            {from: "him", to: "you", content: "How r u ?"},
-            {from: "you", to: "him", content: "all good <3"},
-            {from: "you", to: "him", content: "and u ?"},
-            {from: "him", to: "you", content: "all fine my friend"},
-        ]*/
+        messageStatus: "",
     }
 
     componentDidMount() {
         window.addEventListener("resize", () => this.setState({width: window.innerWidth}));
+        console.log("his status right now: ", this.props.hisStatus);
+        window.onbeforeunload = (() => {
+            const { firebaseUser } = this.context;
+            let myId = firebaseUser.uid;
+            this.props.messagesRef.doc(this.props.messagesDocId).update({[myId + "typing"]: false})
+        })
     }
 
     componentWillUnmount() {
         window.removeEventListener("resize", () => this.setState({width: window.innerWidth}));
+    }
+
+    componentDidUpdate() {
+        console.log("his status right now: ", this.props.hisStatus);
     }
 
     showIcon = (iconName, changeVisibilityFunc, direction) => {
@@ -70,11 +59,38 @@ class ChatArea extends Component {
 
     changeMessage = (e) => {
         this.setState({message: e.target.value});
+        const { firebaseUser } = this.context;
+        let myId = firebaseUser.uid;
+        this.props.messagesRef.doc(this.props.messagesDocId).update({[myId + "typing"]: true})
+        if (e.target.value === "") {
+            this.props.messagesRef.doc(this.props.messagesDocId).update({[myId + "typing"]: false})
+        }
     }
 
     sendMessage = () => {
         this.setState({message: ""});
         this.props.sendMessage(this.state.message);
+        const { firebaseUser } = this.context;
+        let myId = firebaseUser.uid;
+        this.props.messagesRef.doc(this.props.messagesDocId).update({[myId + "typing"]: false})
+    }
+
+    getMessageStatus = (name) => {
+        if (this.props.hisStatus) {
+            return (
+                <div className="typing-status small-text berlin-font white-text">{name + " is typing..."}</div>
+            )
+        } else {
+            return (
+                <span></span>
+            )
+        }
+    }
+
+    blurChanged = (e) => {
+        const { firebaseUser } = this.context;
+        let myId = firebaseUser.uid;
+        this.props.messagesRef.doc(this.props.messagesDocId).update({[myId + "typing"]: false})
     }
 
     render() {
@@ -89,9 +105,9 @@ class ChatArea extends Component {
                         </div>
                         {this.showIcon(menuIcon, this.props.changeVisibilityInfo, "right")}
                     </div>
-                    <ViewMessages messages={this.props.messages} you={this.context.firebaseUser.uid} selectedFriend={this.props.selectedFriend}/>
+                    <ViewMessages messages={this.props.messages} you={this.context.firebaseUser.uid} selectedFriend={this.props.selectedFriend} getMessageStatus={this.getMessageStatus}/>
                     <div className="flex-row align justify margin-top---">
-                        <textarea className="message-input berlin-font trans-background white-text margin-right" onChange={e => this.changeMessage(e)} value={this.state.message} placeholder="send a message"/>
+                        <textarea className="message-input berlin-font trans-background white-text margin-right" onChange={e => this.changeMessage(e)} onBlur={e => this.blurChanged(e)} value={this.state.message} placeholder="send a message"/>
                         <button className="submit-button small-text berlin-font" onClick={() => this.sendMessage()}>Send</button>
                     </div>
                 </div>

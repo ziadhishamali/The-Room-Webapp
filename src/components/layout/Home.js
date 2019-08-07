@@ -23,6 +23,7 @@ class Home extends Component {
         messagesRef: null,
         messagesDocId: "",
         selectedFriend: {firstName: "", lastName: ""},
+        statusName: "",
     }
 
     static contextType = LogContext;
@@ -169,10 +170,14 @@ class Home extends Component {
         this.setState({messagesRef, messagesDocId});
         messagesRef.doc(messagesDocId).onSnapshot(doc => {
             if (doc.exists) {
-                this.setState({messages: doc.data().messages});
+                let hisStatus = doc.data()[[hisId + "typing"]];
+                let myStatus = doc.data()[[myId + "typing"]];
+                this.setState({messages: doc.data().messages, [hisId + "typing"]: hisStatus, [myId + "typing"]: myStatus, statusName: [hisId + "typing"]});
             } else {
                 messagesRef.doc(messagesDocId).set({
-                    messages: []
+                    messages: [],
+                    [hisId + "typing"]: false,
+                    [myId + "typing"]: false
                 })
             }
         })
@@ -202,7 +207,7 @@ class Home extends Component {
             return (
                 <div className={this.getHomeClass() + " " + this.state.colors[this.state.currentColor] + "-linear"}>
                     <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} updateFriends={this.updateFriends} updateSelected={this.updateSelected} />
-                    <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} selectedFriend={this.state.selectedFriend} messages={this.state.messages} sendMessage={this.sendMessage} />
+                    <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} selectedFriend={this.state.selectedFriend} messages={this.state.messages} sendMessage={this.sendMessage} messagesRef={this.state.messagesRef} messagesDocId={this.state.messagesDocId} hisStatus={this.state[this.state.statusName]} />
                     <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history} changeColor={this.changeColor}/>
                 </div>
             )

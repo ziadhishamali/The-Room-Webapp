@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ViewMessages = ({messages, you, selectedFriend}) => {
+const ViewMessages = ({messages, you, selectedFriend, getMessageStatus}) => {
     const status = (message) => {
         if (message.from !== you) {
             return (
@@ -32,6 +32,7 @@ const ViewMessages = ({messages, you, selectedFriend}) => {
     return (
         <div className="messages">
             {view}
+            {getMessageStatus(selectedFriend.name)}
         </div>
     )
 }
