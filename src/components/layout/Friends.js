@@ -9,15 +9,6 @@ import { LogContext } from '../../contexts/LogContext';
 class Friends extends Component {
     state = {
         width: window.innerWidth,
-        /*friends: [
-            {name: "Ziad Hisham Ali", status: "online", image: "../../images/DSC_0287.jpg"},
-            {name: "Youssef Ahmed", status: "offline", image: "../../images/DSC_0287.jpg"},
-            {name: "Tarek Maher", status: "online", image: "../../images/DSC_0287.jpg"},
-            {name: "Omar Shaker", status: "online", image: "../../images/DSC_0287.jpg"},
-            {name: "Khalid Ramadan", status: "offline", image: "../../images/DSC_0287.jpg"},
-            {name: "Mostafa Lasheen", status: "offline", image: "../../images/DSC_0287.jpg"},
-            {name: "Mostafa Farrag", status: "online", image: "../../images/DSC_0287.jpg"}
-        ],*/
         current: 0,
         searchList: [],
         searching: false,
@@ -59,7 +50,6 @@ class Friends extends Component {
             this.setState({searching: true});
         }
         let name = e.target.value;
-        console.log("searching for: ", name);
         let firstName = name.split(/\s+/)[0];
         let lastName = name.split(/\s+/)[1];
         let searchListID = [];
@@ -74,7 +64,7 @@ class Friends extends Component {
                     sitem.id = doc.id;
                     sitem.name = doc.data().firstName + " " + doc.data().lastName;
                     sitem.status = "online";
-                    sitem.image = "../../images/DSC_0287.jpg";
+                    sitem.image = doc.data().image;
                     searchList.push(sitem);
                 }
             });
@@ -91,7 +81,7 @@ class Friends extends Component {
                         sitem.id = doc.id;
                         sitem.name = doc.data().firstName + " " + doc.data().lastName;
                         sitem.status = "online";
-                        sitem.image = "../../images/DSC_0287.jpg";
+                        sitem.image = doc.data().image;
                         searchList.push(sitem);
                     }
                 });
@@ -109,7 +99,7 @@ class Friends extends Component {
                         sitem.id = doc.id;
                         sitem.name = doc.data().firstName + " " + doc.data().lastName;
                         sitem.status = "online";
-                        sitem.image = "../../images/DSC_0287.jpg";
+                        sitem.image = doc.data().image;
                         searchList.push(sitem);
                     }
                 });
@@ -126,7 +116,7 @@ class Friends extends Component {
                     sitem.id = doc.id;
                     sitem.name = doc.data().firstName + " " + doc.data().lastName;
                     sitem.status = "online";
-                    sitem.image = "../../images/DSC_0287.jpg";
+                    sitem.image = doc.data().image;
                     searchList.push(sitem);
                 }
             });
