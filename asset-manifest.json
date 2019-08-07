@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/theroom/static/css/main.8ada8021.chunk.css",
+    "main.js": "/theroom/static/js/main.3e29008f.chunk.js",
+    "main.js.map": "/theroom/static/js/main.3e29008f.chunk.js.map",
+    "runtime~main.js": "/theroom/static/js/runtime~main.f179e4c6.js",
+    "runtime~main.js.map": "/theroom/static/js/runtime~main.f179e4c6.js.map",
+    "static/js/2.4085e9a4.chunk.js": "/theroom/static/js/2.4085e9a4.chunk.js",
+    "static/js/2.4085e9a4.chunk.js.map": "/theroom/static/js/2.4085e9a4.chunk.js.map",
+    "index.html": "/theroom/index.html",
+    "precache-manifest.f9e4b65ffd06cccd9bc1ee4bd4d3ccae.js": "/theroom/precache-manifest.f9e4b65ffd06cccd9bc1ee4bd4d3ccae.js",
+    "service-worker.js": "/theroom/service-worker.js",
+    "static/css/main.8ada8021.chunk.css.map": "/theroom/static/css/main.8ada8021.chunk.css.map",
+    "static/media/DSC_0287.jpg": "/theroom/static/media/DSC_0287.235d713b.jpg",
+    "static/media/back.svg": "/theroom/static/media/back.334e40b3.svg",
+    "static/media/friends.svg": "/theroom/static/media/friends.0428f63c.svg",
+    "static/media/logout-white.svg": "/theroom/static/media/logout-white.325d95a2.svg",
+    "static/media/menu.svg": "/theroom/static/media/menu.579e1961.svg",
+    "static/media/next.svg": "/theroom/static/media/next.bbd22377.svg"
+  }
+}
