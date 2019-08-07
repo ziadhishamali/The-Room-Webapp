@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/theroom/static/css/main.8ada8021.chunk.css",
-    "main.js": "/theroom/static/js/main.33a70569.chunk.js",
-    "main.js.map": "/theroom/static/js/main.33a70569.chunk.js.map",
+    "main.js": "/theroom/static/js/main.0b7beff7.chunk.js",
+    "main.js.map": "/theroom/static/js/main.0b7beff7.chunk.js.map",
     "runtime~main.js": "/theroom/static/js/runtime~main.f179e4c6.js",
     "runtime~main.js.map": "/theroom/static/js/runtime~main.f179e4c6.js.map",
-    "static/js/2.4085e9a4.chunk.js": "/theroom/static/js/2.4085e9a4.chunk.js",
-    "static/js/2.4085e9a4.chunk.js.map": "/theroom/static/js/2.4085e9a4.chunk.js.map",
+    "static/js/2.825c4f5b.chunk.js": "/theroom/static/js/2.825c4f5b.chunk.js",
+    "static/js/2.825c4f5b.chunk.js.map": "/theroom/static/js/2.825c4f5b.chunk.js.map",
     "index.html": "/theroom/index.html",
-    "precache-manifest.80f1d8b903be4547b939e43ea60fec96.js": "/theroom/precache-manifest.80f1d8b903be4547b939e43ea60fec96.js",
+    "precache-manifest.8db04b95f574cd91873de366619a8be9.js": "/theroom/precache-manifest.8db04b95f574cd91873de366619a8be9.js",
     "service-worker.js": "/theroom/service-worker.js",
     "static/css/main.8ada8021.chunk.css.map": "/theroom/static/css/main.8ada8021.chunk.css.map",
-    "static/media/DSC_0287.jpg": "/theroom/static/media/DSC_0287.235d713b.jpg",
     "static/media/back.svg": "/theroom/static/media/back.334e40b3.svg",
     "static/media/friends.svg": "/theroom/static/media/friends.0428f63c.svg",
     "static/media/logout-white.svg": "/theroom/static/media/logout-white.325d95a2.svg",
+    "static/media/man.svg": "/theroom/static/media/man.dabcdaa2.svg",
     "static/media/menu.svg": "/theroom/static/media/menu.579e1961.svg",
     "static/media/next.svg": "/theroom/static/media/next.bbd22377.svg"
   }
