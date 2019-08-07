@@ -1,9 +1,9 @@
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: lightgray;
+    background: #00b7ff;
     border-radius: 4px;
 }
 
