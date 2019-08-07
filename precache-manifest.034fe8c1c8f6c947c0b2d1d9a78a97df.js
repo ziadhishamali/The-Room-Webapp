@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "98813212ecd418ac49c4ca1831a7fe88",
+    "revision": "ac2ef2600cad4022fa324430fdb3c6c8",
     "url": "/theroom/index.html"
   },
   {
-    "revision": "92c288f81c4316a73811",
-    "url": "/theroom/static/css/main.8ada8021.chunk.css"
+    "revision": "92a687bb00d261ad4557",
+    "url": "/theroom/static/css/main.cbb00d9c.chunk.css"
   },
   {
-    "revision": "6c49daf92de40550581b",
-    "url": "/theroom/static/js/2.825c4f5b.chunk.js"
+    "revision": "f1b71d5f74e5d81e01ce",
+    "url": "/theroom/static/js/2.4b9ebcc1.chunk.js"
   },
   {
-    "revision": "92c288f81c4316a73811",
-    "url": "/theroom/static/js/main.2b6c7621.chunk.js"
+    "revision": "92a687bb00d261ad4557",
+    "url": "/theroom/static/js/main.431a5055.chunk.js"
   },
   {
     "revision": "cfc1446f0f97cb413e20",
@@ -42,5 +42,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bbd22377f24a72fb1911c0ea6a5416bd",
     "url": "/theroom/static/media/next.bbd22377.svg"
+  },
+  {
+    "revision": "038dbd32d31ac61f875c7a8abf453e6c",
+    "url": "/theroom/static/media/woman.038dbd32.svg"
   }
 ]);
