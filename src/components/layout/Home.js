@@ -45,10 +45,9 @@ class Home extends Component {
             setUsersRef(usersRef);
 
             // get the user's data using the userID
-            usersRef.doc(firebaseUser.uid).onSnapshot(doc => {
+            let usersListener = usersRef.doc(firebaseUser.uid).onSnapshot(doc => {
                 console.log(doc);
                 if (doc.exists) {
-                    console.log("friends: ", doc.data().friends);
                     let friends = doc.data().friends;
                     let firstName = doc.data().firstName;
                     let lastName = doc.data().lastName;
@@ -59,7 +58,6 @@ class Home extends Component {
                     // making friends list
                     var realFriends = [];
                     let firstTime = true;
-                    console.log("friends ids: ", friends);
                     friends.forEach(element => {
                         var fr = {};
                         usersRef.doc(element).get().then(doc => {
@@ -95,6 +93,7 @@ class Home extends Component {
                     this.setState({loaded: true});
                 }
             })
+            this.context.addListener(usersListener)
         }
     }
 
@@ -168,7 +167,7 @@ class Home extends Component {
 
         var messagesRef = db.collection("messages");
         this.setState({messagesRef, messagesDocId});
-        messagesRef.doc(messagesDocId).onSnapshot(doc => {
+        let messagesListener = messagesRef.doc(messagesDocId).onSnapshot(doc => {
             if (doc.exists) {
                 let hisStatus = doc.data()[[hisId + "typing"]];
                 let myStatus = doc.data()[[myId + "typing"]];
@@ -181,6 +180,7 @@ class Home extends Component {
                 })
             }
         })
+        this.context.addListener(messagesListener);
     }
 
     sendMessage = (message) => {

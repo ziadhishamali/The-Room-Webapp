@@ -14,6 +14,7 @@ class LogContextProvider extends Component {
         lastName: "",
         image: "",
         gender: "",
+        listeners: [],
     }
 
     setFirstName = (firstName) => {
@@ -41,10 +42,20 @@ class LogContextProvider extends Component {
         this.state.usersRef.doc(this.state.firebaseUser.uid).update({friends: friends});
     }
 
+    addListener = (listener) => {
+        let listeners = [...this.state.listeners, listener];
+        this.setState({listeners});
+    }
+
+    triggerLogout = () => {
+        for (let listener in this.state.listeners) {
+            this.state.listeners[listener]();
+        }
+    }
+
     componentDidMount() {
         // run authentication state listener
         auth.onAuthStateChanged(firebaseUser => {
-            console.log("auth callback: ", firebaseUser);
             if (firebaseUser) {
                 this.setState({firebaseUser, signedin: true});
                 this.props.history.push('./');
@@ -66,7 +77,9 @@ class LogContextProvider extends Component {
                 setUsersRef: this.setUsersRef,
                 setFriends: this.setFriends,
                 setImage: this.setImage,
-                setGender: this.setGender
+                setGender: this.setGender,
+                addListener: this.addListener,
+                triggerLogout: this.triggerLogout,
             }}>
                 {this.props.children}
             </LogContext.Provider>

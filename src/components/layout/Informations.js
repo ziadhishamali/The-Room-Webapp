@@ -8,6 +8,7 @@ import logout from '../../images/icons/logout-white.svg';
 import design from '../../images/icons/design-white.png';
 import edit from '../../images/icons/edit-white.png';
 import { auth } from '../auth/firebase';
+import { LogContext } from '../../contexts/LogContext';
 
 class Informations extends Component {
     state = {
@@ -21,6 +22,8 @@ class Informations extends Component {
     componentWillUnmount() {
         window.removeEventListener("resize", () => this.setState({width: window.innerWidth}));
     }
+
+    static contextType = LogContext;
 
     getIcon = (iconName, changeVisibilityFunc, direction) => {
         if (this.state.width <= 1000) {
@@ -39,6 +42,7 @@ class Informations extends Component {
     }
 
     logOut = () => {
+        this.context.triggerLogout();
         auth.signOut();
     }
 

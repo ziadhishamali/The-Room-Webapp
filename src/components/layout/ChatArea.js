@@ -30,7 +30,6 @@ class ChatArea extends Component {
 
     componentDidMount() {
         window.addEventListener("resize", () => this.setState({width: window.innerWidth}));
-        console.log("his status right now: ", this.props.hisStatus);
         window.onbeforeunload = (() => {
             const { firebaseUser } = this.context;
             let myId = firebaseUser.uid;
@@ -45,7 +44,9 @@ class ChatArea extends Component {
     componentDidUpdate() {
         console.log("his status right now: ", this.props.hisStatus);
         var messageBody = document.querySelector('.messages');
-        messageBody.scrollTop = messageBody.scrollHeight;
+        if (messageBody !== null) {
+            messageBody.scrollTop = messageBody.scrollHeight;
+        }
     }
 
     showIcon = (iconName, changeVisibilityFunc, direction) => {

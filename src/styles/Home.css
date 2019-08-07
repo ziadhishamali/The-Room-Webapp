@@ -15,8 +15,8 @@ h1 {
 .home {
     overflow: hidden;
     display: grid;
-    grid-template-columns: calc((100vw - 80px) / 4) calc((100vw - 80px) / 4) calc((100vw - 80px) / 4) calc((100vw - 80px) / 4); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
-    grid-column-gap: 20px;
+    grid-template-columns: calc((100vw - 50px) / 4) calc((100vw - 50px) / 4) calc((100vw - 50px) / 4) calc((100vw - 50px) / 4); /*1 column for friends, 2 columns for chat-area, 1 column for informations*/
+    grid-column-gap: 10px;
     padding: 10px;
     grid-template-areas: 'friends chat-area chat-area informations';
     height: calc(100vh - 20px);
