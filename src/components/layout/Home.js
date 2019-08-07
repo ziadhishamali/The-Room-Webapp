@@ -24,6 +24,7 @@ class Home extends Component {
         messagesDocId: "",
         selectedFriend: {firstName: "", lastName: ""},
         statusName: "",
+        status: false,
     }
 
     static contextType = LogContext;
@@ -43,6 +44,7 @@ class Home extends Component {
         if (firebaseUser) {
             let usersRef = db.collection("users");
             setUsersRef(usersRef);
+            usersRef.doc(firebaseUser.uid).update({status: true});
 
             // get the user's data using the userID
             let usersListener = usersRef.doc(firebaseUser.uid).onSnapshot(doc => {
@@ -63,7 +65,7 @@ class Home extends Component {
                         usersRef.doc(element).get().then(doc => {
                             fr.id = doc.id;
                             fr.name = doc.data().firstName + " " + doc.data().lastName;
-                            fr.status = "online";
+                            fr.status = doc.data().status;
                             fr.gender = doc.data().gender;
                             if (fr.gender === "male") {
                                 fr.image = man;
@@ -86,7 +88,8 @@ class Home extends Component {
                         image,
                         firstName,
                         lastName,
-                        gender
+                        gender,
+                        status: true,
                     })
                 }
                 if (this._isMounted) {
@@ -155,7 +158,7 @@ class Home extends Component {
     updateSelected = (friend) => {
         this.setState({selectedFriend: friend});
         console.log(friend);
-        const { firebaseUser } = this.context;
+        const { firebaseUser, usersRef } = this.context;
         let myId = firebaseUser.uid;
         let hisId = friend.id;
         let messagesDocId = "";
@@ -180,7 +183,13 @@ class Home extends Component {
                 })
             }
         })
+
+        let statusListener = usersRef.doc(hisId).onSnapshot(doc => {
+            this.setState({status: doc.data().status});
+        })
+
         this.context.addListener(messagesListener);
+        this.context.addListener(statusListener);
     }
 
     sendMessage = (message) => {
@@ -207,8 +216,8 @@ class Home extends Component {
             return (
                 <div className={this.getHomeClass() + " " + this.state.colors[this.state.currentColor] + "-linear"}>
                     <Friends changeVisibilityFriends={this.changeVisibilityFriends} friends={this.state.friends} updateFriends={this.updateFriends} updateSelected={this.updateSelected} />
-                    <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} selectedFriend={this.state.selectedFriend} messages={this.state.messages} sendMessage={this.sendMessage} messagesRef={this.state.messagesRef} messagesDocId={this.state.messagesDocId} hisStatus={this.state[this.state.statusName]} />
-                    <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history} changeColor={this.changeColor}/>
+                    <ChatArea changeVisibilityFriends={this.changeVisibilityFriends} changeVisibilityInfo={this.changeVisibilityInfo} selectedFriend={this.state.selectedFriend} messages={this.state.messages} sendMessage={this.sendMessage} messagesRef={this.state.messagesRef} messagesDocId={this.state.messagesDocId} hisStatus={this.state[this.state.statusName]} status={this.state.status} />
+                    <Informations changeVisibilityInfo={this.changeVisibilityInfo} history={this.props.history} changeColor={this.changeColor} status={this.state.status} />
                 </div>
             )
         } else {

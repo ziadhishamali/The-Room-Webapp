@@ -8,14 +8,14 @@ import { LogContext } from '../../contexts/LogContext';
 
 class ChatArea extends Component {
     
-    status = (friend) => {
-        if (friend.status === "online" || true) {
+    status = () => {
+        if (this.props.status) {
             return (
-                <span className="status white-background small-text green-text arial-font light-weight margin-top--">{friend.status}</span>
+                <span className="status white-background small-text green-text arial-font light-weight margin-top--">online</span>
             )
         } else {
             return (
-                <span className="status white-background small-text red-text arial-font light-weight margin-top--">{friend.status}</span>
+                <span className="status white-background small-text red-text arial-font light-weight margin-top--">offline</span>
             )
         }
     }

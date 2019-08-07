@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import '../../styles/Informations.css';
 import IconMenu from '../view/IconMenu';
 import ViewButton from '../view/ViewButton';
-
 import next from '../../images/icons/next.svg';
 import logout from '../../images/icons/logout-white.svg';
 import design from '../../images/icons/design-white.png';
@@ -43,6 +42,7 @@ class Informations extends Component {
 
     logOut = () => {
         this.context.triggerLogout();
+        this.context.usersRef.doc(this.context.firebaseUser.uid).update({status: false});
         auth.signOut();
     }
 
