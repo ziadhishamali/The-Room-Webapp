@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ac17ff1d9dbb9dece67bd86025255361",
+    "revision": "d66cd54aaee248aa63fb27f185aa200a",
     "url": "/theroom/index.html"
   },
   {
-    "revision": "036f627181a6cbbc439f",
+    "revision": "c9e4197450650fac8db1",
     "url": "/theroom/static/css/main.71dd46c9.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/theroom/static/js/2.f04a124c.chunk.js"
   },
   {
-    "revision": "036f627181a6cbbc439f",
-    "url": "/theroom/static/js/main.71d552b7.chunk.js"
+    "revision": "c9e4197450650fac8db1",
+    "url": "/theroom/static/js/main.8ccefdf5.chunk.js"
   },
   {
     "revision": "cfc1446f0f97cb413e20",
