@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/theroom/static/css/main.0d67c1ce.chunk.css",
+    "main.css": "/theroom/static/css/main.5c59362a.chunk.css",
     "main.js": "/theroom/static/js/main.b0cbcf1d.chunk.js",
     "main.js.map": "/theroom/static/js/main.b0cbcf1d.chunk.js.map",
     "runtime~main.js": "/theroom/static/js/runtime~main.f179e4c6.js",
@@ -8,9 +8,9 @@
     "static/js/2.19aeb2d6.chunk.js": "/theroom/static/js/2.19aeb2d6.chunk.js",
     "static/js/2.19aeb2d6.chunk.js.map": "/theroom/static/js/2.19aeb2d6.chunk.js.map",
     "index.html": "/theroom/index.html",
-    "precache-manifest.1d4342730c9e5eccb7e1dcd0c4ed7b6a.js": "/theroom/precache-manifest.1d4342730c9e5eccb7e1dcd0c4ed7b6a.js",
+    "precache-manifest.3d7faebeda211a253ba51db54fe2a3ab.js": "/theroom/precache-manifest.3d7faebeda211a253ba51db54fe2a3ab.js",
     "service-worker.js": "/theroom/service-worker.js",
-    "static/css/main.0d67c1ce.chunk.css.map": "/theroom/static/css/main.0d67c1ce.chunk.css.map",
+    "static/css/main.5c59362a.chunk.css.map": "/theroom/static/css/main.5c59362a.chunk.css.map",
     "static/media/back.svg": "/theroom/static/media/back.334e40b3.svg",
     "static/media/friends.svg": "/theroom/static/media/friends.0428f63c.svg",
     "static/media/logout-white.svg": "/theroom/static/media/logout-white.325d95a2.svg",
