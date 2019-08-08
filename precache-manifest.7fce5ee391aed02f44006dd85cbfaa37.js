@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6d0f97a7e8592273c334688a0573ace3",
+    "revision": "ac17ff1d9dbb9dece67bd86025255361",
     "url": "/theroom/index.html"
   },
   {
-    "revision": "e8853191772216a314aa",
-    "url": "/theroom/static/css/main.5c59362a.chunk.css"
+    "revision": "036f627181a6cbbc439f",
+    "url": "/theroom/static/css/main.71dd46c9.chunk.css"
   },
   {
-    "revision": "732dc97709970679a6a8",
-    "url": "/theroom/static/js/2.19aeb2d6.chunk.js"
+    "revision": "3e44ae116b4b2fb5dbb1",
+    "url": "/theroom/static/js/2.f04a124c.chunk.js"
   },
   {
-    "revision": "e8853191772216a314aa",
-    "url": "/theroom/static/js/main.b0cbcf1d.chunk.js"
+    "revision": "036f627181a6cbbc439f",
+    "url": "/theroom/static/js/main.71d552b7.chunk.js"
   },
   {
     "revision": "cfc1446f0f97cb413e20",
@@ -42,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bbd22377f24a72fb1911c0ea6a5416bd",
     "url": "/theroom/static/media/next.bbd22377.svg"
+  },
+  {
+    "revision": "b00c7a5ed9246963e062d472daa7bedb",
+    "url": "/theroom/static/media/send-2.b00c7a5e.svg"
   },
   {
     "revision": "038dbd32d31ac61f875c7a8abf453e6c",
