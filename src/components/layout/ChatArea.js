@@ -4,6 +4,7 @@ import ViewMessages from '../view/ViewMessages';
 import IconMenu from '../view/IconMenu';
 import friendsIcon from '../../images/icons/friends.svg';
 import menuIcon from '../../images/icons/menu.svg';
+import send from '../../images/send-2.svg';
 import { LogContext } from '../../contexts/LogContext';
 
 class ChatArea extends Component {
@@ -71,6 +72,9 @@ class ChatArea extends Component {
     }
 
     sendMessage = () => {
+        if (this.state.message === "") {
+            return;
+        }
         this.setState({message: ""});
         this.props.sendMessage(this.state.message);
         const { firebaseUser } = this.context;
@@ -111,7 +115,7 @@ class ChatArea extends Component {
                     <ViewMessages messages={this.props.messages} you={this.context.firebaseUser.uid} selectedFriend={this.props.selectedFriend} getMessageStatus={this.getMessageStatus}/>
                     <div className="flex-row align justify margin-top---">
                         <textarea className="message-input berlin-font trans-background white-text margin-right" onChange={e => this.changeMessage(e)} onBlur={e => this.blurChanged(e)} value={this.state.message} placeholder="send a message"/>
-                        <button className="submit-button small-text berlin-font" onClick={() => this.sendMessage()}>Send</button>
+                        <button className="submit-button send-button small-text berlin-font" onClick={() => this.sendMessage()}><img className="send-image" src={send} alt="Send"/></button>
                     </div>
                 </div>
             )

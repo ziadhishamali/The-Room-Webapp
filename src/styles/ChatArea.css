@@ -81,6 +81,23 @@
     border-radius: 10px;
 }
 
+.send-button {
+    padding: 8px !important;
+    border-radius: 50% !important;
+    background-color: #00b7ff !important;
+}
+
+.send-button:hover {
+    background-color: #2cc3ff !important;
+    border-color: #2cc3ff !important;
+}
+
+.send-image {
+    width: 30px;
+    object-fit: contain;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(192deg) brightness(99%) contrast(106%); /* #ffffff */
+}
+
 @media only screen and (max-width: 1000px) {
     .chat-area {
         height: 100vh;
@@ -88,5 +105,14 @@
 
     .messages {
         height: calc(100vh - 135px) !important;
+    }
+
+    .message-input {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .submit-button {
+        margin-right: 5px;
     }
 }
