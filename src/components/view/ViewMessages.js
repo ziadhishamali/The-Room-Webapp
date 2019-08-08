@@ -5,7 +5,7 @@ const ViewMessages = ({messages, you, selectedFriend, getMessageStatus}) => {
         if (message.from !== you) {
             return (
                 <div className="margin-left-fix align">
-                    <img className="message-image margin-left--" src={selectedFriend.image} alt="img"/>
+                    <img className="message-image margin-left-- box-shadow" src={selectedFriend.image} alt="img"/>
                     <p className="message-from small-text black-text berlin-font light-weight white-background margin-left--">{message.content}</p>
                 </div>
             )

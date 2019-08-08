@@ -38,7 +38,7 @@ class Home extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        const { firebaseUser, firstName, lastName, image, gender, setFirstName, setLastName, setUsersRef, setFriends } = this.context;
+        const { firebaseUser, firstName, lastName, image, gender, setImage, setFirstName, setLastName, setUsersRef, setFriends } = this.context;
 
         // get the data of the currently logged in user
         if (firebaseUser) {
@@ -53,9 +53,11 @@ class Home extends Component {
                     let friends = doc.data().friends;
                     let firstName = doc.data().firstName;
                     let lastName = doc.data().lastName;
+                    let image = doc.data().image;
                     setFirstName(firstName);
                     setLastName(lastName);
                     setFriends(friends);
+                    setImage(image);
 
                     // making friends list
                     var realFriends = [];

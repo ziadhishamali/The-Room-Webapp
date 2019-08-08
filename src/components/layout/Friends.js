@@ -28,14 +28,16 @@ class Friends extends Component {
         if (this.state.width <= 1000) {
             return (
                 <div className="flex-row align">
-                    <h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2 friend-header">Friends</h1>
+                    <img className="friend-image margin-left box-shadow-2 cursor" src={this.context.image} alt="my"/>
+                    <div className="flex-row justify align friend-width margin-right-4"><h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2 friend-header">Friends</h1></div>
                     <IconMenu icon={iconName} changeVisibility={changeVisibilityFunc} direction={direction}/>
                 </div>
             )
         }
         return (
-            <div>
-                <h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2">Friends</h1>
+            <div className="flex-row justify-start align">
+                <img className="friend-image margin-left box-shadow-2 cursor" src={this.context.image} alt="my"/>
+                <div className="flex-row justify align friend-width"><h1 className="small-text white-text berlin-font light-weight margin-top margin-bottom-2">Friends</h1></div>
             </div>
         )
     }

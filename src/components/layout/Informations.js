@@ -41,8 +41,8 @@ class Informations extends Component {
     }
 
     logOut = () => {
-        this.context.triggerLogout();
         this.context.usersRef.doc(this.context.firebaseUser.uid).update({status: false});
+        this.context.triggerLogout();
         auth.signOut();
     }
 

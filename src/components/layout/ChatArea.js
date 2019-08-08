@@ -11,11 +11,11 @@ class ChatArea extends Component {
     status = () => {
         if (this.props.status) {
             return (
-                <span className="status white-background small-text green-text arial-font light-weight margin-top--">online</span>
+                <span className="status white-background small-text green-text berlin-font light-weight margin-top--">online</span>
             )
         } else {
             return (
-                <span className="status white-background small-text red-text arial-font light-weight margin-top--">offline</span>
+                <span className="status white-background small-text red-text berlin-font light-weight margin-top--">offline</span>
             )
         }
     }
