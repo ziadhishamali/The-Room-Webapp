@@ -1,23 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ff53c5d74fe1061b58ef59920b5b2bde",
+    "revision": "489b829c08bb63c713bb551f0304d9c4",
     "url": "/theroom/index.html"
   },
   {
-    "revision": "e881e6e9dc93c9e87fef",
-    "url": "/theroom/static/css/main.9f315839.chunk.css"
+    "revision": "86a4dde281ddb45d6860",
+    "url": "/theroom/static/css/main.066e10df.chunk.css"
   },
   {
     "revision": "3e44ae116b4b2fb5dbb1",
     "url": "/theroom/static/js/2.f04a124c.chunk.js"
   },
   {
-    "revision": "e881e6e9dc93c9e87fef",
-    "url": "/theroom/static/js/main.e6c8b887.chunk.js"
+    "revision": "86a4dde281ddb45d6860",
+    "url": "/theroom/static/js/main.b6d64d17.chunk.js"
   },
   {
     "revision": "cfc1446f0f97cb413e20",
     "url": "/theroom/static/js/runtime~main.f179e4c6.js"
+  },
+  {
+    "revision": "14aaff013398c35430cc935d1e4dcd99",
+    "url": "/theroom/static/media/BreeSerif-Regular.14aaff01.ttf"
+  },
+  {
+    "revision": "a7803ddf902b6c7b5ac326af14e450b3",
+    "url": "/theroom/static/media/FugazOne-Regular.a7803ddf.ttf"
+  },
+  {
+    "revision": "77fa00996ecb4104c7880b8749c7c4e0",
+    "url": "/theroom/static/media/Righteous-Regular.77fa0099.ttf"
   },
   {
     "revision": "334e40b3f8a777ea256e1033717c7781",
